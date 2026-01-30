@@ -36,16 +36,16 @@ export default function EditBook() {
   ];
 
   // Redirect if not admin
- if (!isAuthenticated || !isAdmin) {
+  if (!isAuthenticated || !isAdmin) {
     router.replace('/');
     return;
   }
 
- useEffect(() => {
-  if (bookId) {
-    fetchBook(bookId);
-  }
-}, [bookId]);
+  useEffect(() => {
+    if (id) {
+      fetchBook();
+    }
+  }, [id]);
 
   const fetchBook = async () => {
     try {
@@ -88,9 +88,9 @@ export default function EditBook() {
       if (!submitData.isbn) delete submitData.isbn;
       if (!submitData.description) delete submitData.description;
 
-      await axios.put(`${process.env.API_URL}/books/${bookId}`, submitData);
+      await axios.put(`${process.env.API_URL}/books/${id}`, submitData);
       toast.success('Book updated successfully!');
-      router.push(`/books/${bookId}`);
+      router.push(`/books/${id}`);
     } catch (error) {
       toast.error(error.response?.data?.error || 'Failed to update book');
       console.error(error);
@@ -113,7 +113,7 @@ export default function EditBook() {
     <Layout title="Edit Book - Library System">
       <div className="max-w-2xl mx-auto">
         <Link
-          href={`/books/${bookId}`}
+          href={`/books/${id}`}
           className="text-primary-600 hover:underline mb-6 inline-block"
         >
           ← Back to Book Details
