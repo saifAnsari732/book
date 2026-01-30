@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    API_URL: process.env.API_URL || 'http://localhost:5000/api',
+    API_URL: process.env.API_URL || 'https://bookb-zxun.onrender.com/api',
   },
 }
 
