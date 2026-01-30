@@ -65,7 +65,7 @@ export default function Home() {
     setCategory(cat === 'All' ? '' : cat);
     setCurrentPage(1);
   };
-
+   
   return (
     <Layout title="Library System - Discover Your Next Read">
       <style jsx>{`
